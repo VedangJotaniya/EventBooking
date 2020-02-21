@@ -1,6 +1,7 @@
+
 <html>
 <head>
-    <meta charset="utf-8">
+<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Font Awesome -->
@@ -15,44 +16,35 @@
     <!--link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"-->
  
     <title>
-        Broadcast a Message
+        View The Notices
     </title>
 </head>
 <body>
-    <!-- Main content -->
-    <section class="content">
+<section class="content">
       <div class="row">
         <div class="col-md-6">
           <div class="card card-outline card-info">
             <div class="card-header">
               <h3 class="card-title">
-                Bootstrap WYSIHTML5
+                Admin Messages
                 <small>Simple and fast</small>
               </h3>
-              <!-- tools box -->
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip"
-                        title="Collapse">
-                  <i class="fas fa-minus"></i></button>
-              </div>
               <!-- /. tools -->
             </div>
             <!-- /.card-header -->
-            <form action="messenger.php" method="POST">
-            <div class="card-body pad">
-              <div class="mb-3">
-                <textarea class="textarea" placeholder="Place some text here" rows="10" name="message"></textarea>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-info">Sign in</button>
-            </form>
+
           </div>
         </div>
         <!-- /.col-->
       </div>
       <!-- ./row -->
+      <div class="row">
+          <div class="col-md-6">
+                <div id="msg_box"></div>              
+          </div>
+      </div>
     </section>
-<!-- jQuery -->
+    <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -62,13 +54,27 @@
 <script src="../../dist/js/demo.js"></script>
 <!-- Summernote -->
 <script src="../../plugins/summernote/summernote-bs4.min.js"></script>
-<script>
-  $(function () {
-    // Summernote
-    $('.textarea').summernote();
-  })
-</script>
+
+    <script>
+        $(document).ready(function(){
+            alert('1');
+            var msgbox = document.getElementById('msg_box');
+            alert('12');
+            $.ajax({
+                url     : "getmessage.php",
+                type    : "POST",
+                success : function(data)
+                {
+                    alert('123');
+                    msgbox.innerHTML = data;
+                    alert('1234');
+                }
+            })
+
+        })
+
+
+    </script>
 
 </body>
-
 </html>
